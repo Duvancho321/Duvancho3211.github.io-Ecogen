@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Proyectos de clase</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="estilo.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Ecologia General</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="material.html">Material</a>
+</li>
+<li>
+  <a href="pro.html">Proyectos</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/Duvancho321">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Proyectos de clase</h1>
+
+</div>
+
+
+<div id="experimento-de-lechuga" class="section level1">
+<h1>Experimento de lechuga</h1>
+<p>Este experimento fue realizado por los estudiantes de Ecotoxicología del semestre 2018-2. Se realizo un análisis de varianza de una sola vía y se determinó el tamaño del efecto del mismo.</p>
+<div id="htmlwidget-58fbf25a1d8d6ff8a689" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-58fbf25a1d8d6ff8a689">{"x":{"data":[{"x":[0.925640887441114,1.03621331579052,1.07852904102765,0.901814445247874,1.05756971063092,0.923719322448596,0.907975494628772,1.03411245653406,1.021833809698,0.980899102892727,1.05574196665548,0.921365090226755,0.920951072545722,1.02155194259249,1.03051984203048,0.93665325907059,0.976618083240464,0.999902866827324,0.911395767703652,1.05937230084091,2.00785791533999,1.98526280890219,2.01419744584709,2.00520440996625,2.08431320735253,2.05580663150176,1.91253605294041,1.96515243980102,1.92076791529544,2.00708544831723,1.95234837559983,2.08874487723224,1.94786649663001,2.04666897458956,2.08095009592362,2.09538295641541,1.99991096532904,2.01162616121583,2.00939420755021,2.98218179629184,3.07869042246602,2.91233612271026,2.91360541405156,2.9928780128248,3.02008513426408,3.06712789260782,3.08970709601417,3.05131529881619,2.94667193074711,2.96964619881473,3.04691392797977,2.9204389130231,2.99893478951417,2.9280540571548,2.9504643721506,3.02029784005135,3.0465267051477,3.09533853442408,2.93802575240843,3.98371773143299,4.08640930084512,3.98254795884714,3.93880860744976,4.04824782046489,4.02601875322871,4.08115330440924,4.07830326859839,3.99538419642486,3.94518817495555,4.07763936724514,3.94393820846453,3.91673607556149,3.93004262121394,3.97466133730486,3.93487686766312,4.08868208546191,4.04554001945071,3.9096740856301,4.05316031770781,5.03492181398906,5.01768211643212,5.09490276579745,5.06559532559477,4.98239630549215,4.96419957615435,4.97108734021895,4.96339439377189,5.03352285283618,4.91070931819268,4.98397459434345,5.0027498124633,4.95200969339348,5.08456224394031,5.08371384064667,5.07829591869377,5.08562644138001,5.0324960260652,5.05199807039462,4.97210726481862],"y":[70.51,33.339,34.353,41.501,52.499,60.392,56.677,67.819,57.333,36.368,63.512,35.187,44.263,45.518,47.472,43.46,53.008,70.784,69.108,62.865,28.403,35.831,30.893,21.165,11.323,23.657,36.062,29.389,37.203,49.167,28.093,28.822,31.698,26.436,30.315,29.707,36.43,28.657,21.487,20.219,25.146,16.375,21.701,6.245,24.018,14.291,13.965,23.968,20.649,17.599,14.384,16.49,18.47,18.913,26.353,28.2,20.221,15.106,23.669,23.186,8.513,10.169,12.731,10.254,14.909,10.066,15.338,14.523,17.373,15.94,11.67,23.268,15.783,7.221,9.73,10.904,10.461,5.858,16.884,7.9,6.413,11.419,7.018,11.035,8.397,5.566,2.364,8.663,8.193,6.661,4.766,9.067,1.843,4.753,6.065,1.327,3.527,3.75,4.744],"text":["Dosis: Control<br />Area: 70.510","Dosis: Control<br />Area: 33.339","Dosis: Control<br />Area: 34.353","Dosis: Control<br />Area: 41.501","Dosis: Control<br />Area: 52.499","Dosis: Control<br />Area: 60.392","Dosis: Control<br />Area: 56.677","Dosis: Control<br />Area: 67.819","Dosis: Control<br />Area: 57.333","Dosis: Control<br />Area: 36.368","Dosis: Control<br />Area: 63.512","Dosis: Control<br />Area: 35.187","Dosis: Control<br />Area: 44.263","Dosis: Control<br />Area: 45.518","Dosis: Control<br />Area: 47.472","Dosis: Control<br />Area: 43.460","Dosis: Control<br />Area: 53.008","Dosis: Control<br />Area: 70.784","Dosis: Control<br />Area: 69.108","Dosis: Control<br />Area: 62.865","Dosis: Dosis 1<br />Area: 28.403","Dosis: Dosis 1<br />Area: 35.831","Dosis: Dosis 1<br />Area: 30.893","Dosis: Dosis 1<br />Area: 21.165","Dosis: Dosis 1<br />Area: 11.323","Dosis: Dosis 1<br />Area: 23.657","Dosis: Dosis 1<br />Area: 36.062","Dosis: Dosis 1<br />Area: 29.389","Dosis: Dosis 1<br />Area: 37.203","Dosis: Dosis 1<br />Area: 49.167","Dosis: Dosis 1<br />Area: 28.093","Dosis: Dosis 1<br />Area: 28.822","Dosis: Dosis 1<br />Area: 31.698","Dosis: Dosis 1<br />Area: 26.436","Dosis: Dosis 1<br />Area: 30.315","Dosis: Dosis 1<br />Area: 29.707","Dosis: Dosis 1<br />Area: 36.430","Dosis: Dosis 1<br />Area: 28.657","Dosis: Dosis 1<br />Area: 21.487","Dosis: Dosis 2<br />Area: 20.219","Dosis: Dosis 2<br />Area: 25.146","Dosis: Dosis 2<br />Area: 16.375","Dosis: Dosis 2<br />Area: 21.701","Dosis: Dosis 2<br />Area:  6.245","Dosis: Dosis 2<br />Area: 24.018","Dosis: Dosis 2<br />Area: 14.291","Dosis: Dosis 2<br />Area: 13.965","Dosis: Dosis 2<br />Area: 23.968","Dosis: Dosis 2<br />Area: 20.649","Dosis: Dosis 2<br />Area: 17.599","Dosis: Dosis 2<br />Area: 14.384","Dosis: Dosis 2<br />Area: 16.490","Dosis: Dosis 2<br />Area: 18.470","Dosis: Dosis 2<br />Area: 18.913","Dosis: Dosis 2<br />Area: 26.353","Dosis: Dosis 2<br />Area: 28.200","Dosis: Dosis 2<br />Area: 20.221","Dosis: Dosis 2<br />Area: 15.106","Dosis: Dosis 2<br />Area: 23.669","Dosis: Dosis 3<br />Area: 23.186","Dosis: Dosis 3<br />Area:  8.513","Dosis: Dosis 3<br />Area: 10.169","Dosis: Dosis 3<br />Area: 12.731","Dosis: Dosis 3<br />Area: 10.254","Dosis: Dosis 3<br />Area: 14.909","Dosis: Dosis 3<br />Area: 10.066","Dosis: Dosis 3<br />Area: 15.338","Dosis: Dosis 3<br />Area: 14.523","Dosis: Dosis 3<br />Area: 17.373","Dosis: Dosis 3<br />Area: 15.940","Dosis: Dosis 3<br />Area: 11.670","Dosis: Dosis 3<br />Area: 23.268","Dosis: Dosis 3<br />Area: 15.783","Dosis: Dosis 3<br />Area:  7.221","Dosis: Dosis 3<br />Area:  9.730","Dosis: Dosis 3<br />Area: 10.904","Dosis: Dosis 3<br />Area: 10.461","Dosis: Dosis 3<br />Area:  5.858","Dosis: Dosis 3<br />Area: 16.884","Dosis: Dosis 4<br />Area:  7.900","Dosis: Dosis 4<br />Area:  6.413","Dosis: Dosis 4<br />Area: 11.419","Dosis: Dosis 4<br />Area:  7.018","Dosis: Dosis 4<br />Area: 11.035","Dosis: Dosis 4<br />Area:  8.397","Dosis: Dosis 4<br />Area:  5.566","Dosis: Dosis 4<br />Area:  2.364","Dosis: Dosis 4<br />Area:  8.663","Dosis: Dosis 4<br />Area:  8.193","Dosis: Dosis 4<br />Area:  6.661","Dosis: Dosis 4<br />Area:  4.766","Dosis: Dosis 4<br />Area:  9.067","Dosis: Dosis 4<br />Area:  1.843","Dosis: Dosis 4<br />Area:  4.753","Dosis: Dosis 4<br />Area:  6.065","Dosis: Dosis 4<br />Area:  1.327","Dosis: Dosis 4<br />Area:  3.527","Dosis: Dosis 4<br />Area:  3.750","Dosis: Dosis 4<br />Area:  4.744"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":0.2,"size":7.55905511811024,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"visible":false,"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","mode":"","frame":null},{"x":[1,2,3,4,5],"y":[52.2984,29.7230526315789,19.2991,13.23905,6.17355],"text":["Dosis: Control<br />Area: 52.29840","Dosis: Dosis 1<br />Area: 29.72305","Dosis: Dosis 2<br />Area: 19.29910","Dosis: Dosis 3<br />Area: 13.23905","Dosis: Dosis 4<br />Area:  6.17355"],"type":"scatter","mode":"lines+markers","opacity":1,"line":{"color":"rgba(230,159,0,1)","width":2.64566929133858,"dash":"solid"},"error_y":{"array":[12.7762309053714,7.80243912343146,5.23888115716966,4.7136216657571,2.85422409910202],"arrayminus":[12.7762309053714,7.80243912343145,5.23888115716966,4.7136216657571,2.85422409910202],"type":"data","width":17.2307692307692,"symmetric":false,"color":"rgba(230,159,0,1)"},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(230,159,0,1)","opacity":1,"size":2.64566929133858,"symbol":"circle","line":{"width":3.77952755905512,"color":"rgba(230,159,0,1)"}},"hoveron":"points","frame":null},{"x":[0.4,5.6],"y":[24.090303030303,24.090303030303],"text":"yintercept: 24.0903","type":"scatter","mode":"lines","line":{"width":3.77952755905512,"color":"rgba(86,180,233,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2,5.2],"y":[13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13],"text":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],"hovertext":["x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13","x: 5.2<br />y: 13<br />Dosis: 5.2<br />Area: 13"],"textfont":{"size":7.55905511811024,"color":"rgba(0,0,255,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":25.5707762557078,"l":43.1050228310502},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Lactuca sativa","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,5.6],"tickmode":"array","ticktext":["Control","Dosis 1","Dosis 2","Dosis 3","Dosis 4"],"tickvals":[1,2,3,4,5],"categoryorder":"array","categoryarray":["Control","Dosis 1","Dosis 2","Dosis 3","Dosis 4"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-5,105],"tickmode":"array","ticktext":["0","25","50","75","100"],"tickvals":[0,25,50,75,100],"categoryorder":"array","categoryarray":["0","25","50","75","100"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Area(cm2)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"11b88ce4d0a":{"x":{},"y":{},"type":"scatter"},"11b8618d69a9":{"y":{}},"11b8243f65b3":{"x":{},"y":{}},"11b81ade1c53":{"x":{},"y":{}},"11b86632513":{"x":{},"y":{}},"11b82fc96e55":{"yintercept":{}},"11b84a3c68c5":{"x":{},"y":{},"x.1":{},"y.1":{}}},"cur_data":"11b88ce4d0a","visdat":{"11b88ce4d0a":["function (y) ","x"],"11b8618d69a9":["function (y) ","x"],"11b8243f65b3":["function (y) ","x"],"11b81ade1c53":["function (y) ","x"],"11b86632513":["function (y) ","x"],"11b82fc96e55":["function (y) ","x"],"11b84a3c68c5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

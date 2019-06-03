@@ -1,9 +1,22 @@
 name: "Ecologia General"
 output_dir: "."
 navbar:
-  title: "My Website"
+  title: "Ecologia General"
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+   # - text: "About"
+    #  href: about.html
+    - text: "Material"
+      href: material.html
+    - text: "Proyectos"
+      href: pro.html
+  right:
+    - icon: fa-github
+      href: https://github.com/Duvancho321
+output:
+  html_document:
+    theme: united
+    highlight: kate
+    df_print: paged
+    css: estilo.css  

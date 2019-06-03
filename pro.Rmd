@@ -1,0 +1,46 @@
+---
+title: "Proyectos de clase"
+output:
+  html_document:
+    toc: true
+    toc_float: true 
+    message: false
+---
+
+```{r setup, include=FALSE,message=FALSE,echo=FALSE,comment=FALSE,error=FALSE,warning=FALSE}
+library(readxl)
+library(ggplot2)
+library(gifski)
+library(gganimate)
+library(plotly)
+
+load("Lechuga1.Rdata")
+
+```
+
+# Experimento de lechuga
+
+Este experimento fue realizado por los estudiantes de Ecotoxicología del semestre 2018-2.
+Se realizo un análisis de varianza de una sola vía y se determinó el tamaño del efecto del mismo.
+
+```{r anova, message=FALSE,echo=FALSE,comment=FALSE,error=FALSE,warning=FALSE}
+
+an <- ggplot(data = df, aes(x = Dosis, y = Area)) + theme_minimal()+
+  geom_jitter(width = 0.1, height = 0,size=2,alpha=0.2,shape=19) +
+  expand_limits(y=c(0,100))+
+  stat_summary(fun.y = "mean", geom = "pointrange", col = "#E69F00", 
+               shape = 19, size=0.7, fun.ymin = function(x) mean(x) - sd(x),fun.ymax = function(x) mean(x) + sd(x)) +
+  stat_summary(fun.y = "mean", geom = "errorbar", width=0.2,lwd=1, col = "#E69F00",fun.ymin = function(x) mean(x) - sd(x),fun.ymax = function(x) mean(x) + sd(x)) +
+  stat_summary(fun.y = "mean", geom = "line", col = "#E69F00", group = 1,lwd=0.7) +
+  geom_hline(yintercept = mean(df$Area), lwd = 1, color = "#56B4E9",
+             lty = 2) +
+  geom_text(mapping=aes(x=5.2,y=13),label="",vjust=-0.3,color="blue",size=2) +
+  labs(x = "", y = "Area(cm2)",title = "Lactuca sativa")
+  #labs(x = "", y = expression('Area '*('cm'^'2')),title = "Lactuca sativa")
+
+anp <- ggplotly(an)
+anp
+
+
+```
+
