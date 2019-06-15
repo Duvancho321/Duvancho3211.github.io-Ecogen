@@ -2,6 +2,7 @@
 title: "Proyectos de clase"
 output:
   html_document:
+    code_folding: hide
     toc: true
     toc_float: true
     toc_depth: 3 
@@ -16,7 +17,11 @@ library(ggplot2)
 library(gifski)
 library(gganimate)
 library(plotly)
+library(haven)
 library(car)
+library(caret)
+library(stats)
+library(lmtest)
 
 load("Lechuga1.Rdata")
 
@@ -112,11 +117,15 @@ summary(modelo)
 
 ```
 
+<br>
+
 ###Medias
 
 ```{r}
 model.tables(x = modelo, type = "means")
 ```
+
+<br>
 
 ###Efectos
 
@@ -124,6 +133,8 @@ model.tables(x = modelo, type = "means")
 model.tables(x = modelo, type = "effects")
 
 ```
+
+<br>
 
 ##Residuales y supuestos
 
@@ -138,6 +149,8 @@ df$Residuales <- resid.estandar
 
 ```
 
+<br>
+
 ###Normalidad
 
 ```{r}
@@ -146,15 +159,16 @@ car::qqPlot(df$Residuales, main = "Residuales del modelo",id=FALSE,ylab = "res")
 
 #Prueba de normalidad
 shapiro.test(df$Residuales)
-
 ```
-
+<br>
 
 ###Homogenidad de varianzas
 
 ```{r}
 bartlett.test(df$Residuales ~ df$Dosis)
 ```
+
+<br>
 
 ##Tamaño del efecto
 
