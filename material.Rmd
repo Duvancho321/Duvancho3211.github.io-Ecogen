@@ -3,7 +3,10 @@ title: "material"
 output:
   html_document:
     toc: true
-    toc_float: true 
+    toc_float: true
+    toc_depth: 3
+    df_print: paged
+    css: estilo.css
 ---
 
 ```{r setup, include=FALSE}

@@ -3,8 +3,11 @@ title: "Proyectos de clase"
 output:
   html_document:
     toc: true
-    toc_float: true 
+    toc_float: true
+    toc_depth: 3 
     message: false
+    df_print: paged
+    css: estilo.css
 ---
 
 ```{r setup, include=FALSE,message=FALSE,echo=FALSE,comment=FALSE,error=FALSE,warning=FALSE}
@@ -13,19 +16,78 @@ library(ggplot2)
 library(gifski)
 library(gganimate)
 library(plotly)
+library(car)
 
 load("Lechuga1.Rdata")
 
 ```
 
-# Experimento de lechuga
+# Experimento 2018-S2
 
-Este experimento fue realizado por los estudiantes de Ecotoxicología del semestre 2018-2.
-Se realizo un análisis de varianza de una sola vía y se determinó el tamaño del efecto del mismo.
+<P ALIGN="justify"> 
+Este experimento fue realizado por los estudiantes de ecotoxicología del semestre 2018-2. Se sometieron plántulas de lechuga a distintas dosis de fertilizante diluidas en masas de tierra. Para analizar los efectos del fertilizante en la lechuga se utilizo un diseño experimental Dosis respuesta analizado con un análisis de varianza (ANOVA).
+</P>
 
-```{r anova, message=FALSE,echo=FALSE,comment=FALSE,error=FALSE,warning=FALSE}
+<br>
 
-an <- ggplot(data = df, aes(x = Dosis, y = Area)) + theme_minimal()+
+- Condiciones para Anova
+    - Normalidad de los residuos.
+    - Independencia de los residuos.
+    - Homocedasticidad de los residuos.
+
+<br>
+
+- Hipótesis anova
+    $$H_0 : \mu_1\; =\; \mu_2\; =\; \mu_3\; =\; ...\mu_n\; \equiv\;  $$
+    $$H_0 : \forall_i\; : \mu_i\; = \mu_\;$$
+    $$H_1 : Al\;menos\;una\;media\;difiere\;de\;las\;demas$$
+    $$\alpha =\; 0,05$$
+<br>
+
+- Descomposición de la varianza ($\sigma^{2}$):
+    - Variabilidad total : Suma de cuadrados total (SCT) : Variabilidad entre grupos + Variabilidad dentro de grupos .
+    - Variabilidad del tratamiento (intervarianza) : Suma de cuadrados entre grupos.
+    - Variabilidad del error (intravarianza) : Suma de cuadrados residual o dentro de grupos.
+
+<br>
+    
+- Valor F:
+     
+      El valor F mide el grado de similitud que existe entre las medias que se están comparando. El valor F aumenta a mayor diferencia en las medias 
+      
+      - $F \approx 1$ : Medias iguales
+      - $F > 1$ : Medias distintas
+      
+      $$F =\; \frac{Suma\; de\; cuadrados\;entre\;grupos}{Suma\; de\; cuadrados\;dentro\;de\;grupos}\;\;\ \equiv\; \frac{Variabilidad\; del\; Tratamiento\;}{Variabilidad\; del\;Error} $$
+
+<br>
+
+- Tamaño del efecto ($\eta^{2}$): 
+      
+      El tamaño del efecto de una ANOVA permite cuantificar cuánto afecta la variable independiente (factor) a la variable dependiente.
+      
+    - $\eta^{2} \leq 0,05$ : Efecto pequeño o debil
+    - $0,05 < \eta^{2} \leq 0,14$ : Efecto mediano o moderado
+    - $\eta^{2} > 0,14$ : Efecto grande o fuerte
+    
+   
+    $$\eta^{2} =\; \frac{Suma\; de\; cuadrados\;entre\;grupos}{Suma\; de\; cuadrados\;total\;}\;\;\ \equiv\; \frac{Variabilidad\; del\; Tratamiento\;}{Variabilidad\; Total\;}$$
+    
+<br>
+
+##Datos
+
+```{r, echo=FALSE}
+df
+
+```
+
+
+###Gráfico exploratorio 
+
+```{r, message=FALSE,comment=FALSE,error=FALSE,warning=FALSE}
+
+g <- ggplot(data = df, aes(x = Dosis, y = Area)) + theme_minimal()+
   geom_jitter(width = 0.1, height = 0,size=2,alpha=0.2,shape=19) +
   expand_limits(y=c(0,100))+
   stat_summary(fun.y = "mean", geom = "pointrange", col = "#E69F00", 
@@ -38,9 +100,78 @@ an <- ggplot(data = df, aes(x = Dosis, y = Area)) + theme_minimal()+
   labs(x = "", y = "Area(cm2)",title = "Lactuca sativa")
   #labs(x = "", y = expression('Area '*('cm'^'2')),title = "Lactuca sativa")
 
-anp <- ggplotly(an)
-anp
+ ggplotly(g)
+```
+
+##Modelo Anova
+
+```{r}
+
+modelo<-aov(data = df,formula = Area~Dosis )
+summary(modelo)
+
+```
+
+###Medias
+
+```{r}
+model.tables(x = modelo, type = "means")
+```
+
+###Efectos
+
+```{r}
+model.tables(x = modelo, type = "effects")
+
+```
+
+##Residuales y supuestos
+
+```{r}
+
+#Residuales estandarizados
+resid.estandar <- rstandard(model = modelo)
+
+#Agregando residuales a la base de datos
+df$Residuales <- resid.estandar
 
 
 ```
+
+###Normalidad
+
+```{r}
+# Gráfico Q-Q
+car::qqPlot(df$Residuales, main = "Residuales del modelo",id=FALSE,ylab = "res")
+
+#Prueba de normalidad
+shapiro.test(df$Residuales)
+
+```
+
+
+###Homogenidad de varianzas
+
+```{r}
+bartlett.test(df$Residuales ~ df$Dosis)
+```
+
+##Tamaño del efecto
+
+```{r}
+
+lsr::etaSquared(modelo)
+
+```
+
+
+
+
+
+
+
+
+
+
+
 

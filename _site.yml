@@ -16,7 +16,7 @@ navbar:
       href: https://github.com/Duvancho321
 output:
   html_document:
-    theme: united
+    theme: sandstone
     highlight: kate
     df_print: paged
     css: estilo.css  
